@@ -12,7 +12,7 @@ modules, search for files and recover console histories.
 
 ## Environment and Tools
  - **Memory image**: `KobayashiMaru.vmem`
-- **Platform**: Windows XP Service Pack 2/3, 32‑bit, 512 MB of RAM【131694685109100†L37-L61】.
+- **Platform**: Windows XP Service Pack 2/3, 32‑bit, 512 MB of RAM.
 - **Tools**:
   - Volatility 2.6 with plugins (`imageinfo`, `pslist`, `psscan`,
     `dlllist`, `filescan`, `consoles`).
@@ -24,7 +24,7 @@ modules, search for files and recover console histories.
 
 The first step was to determine the correct profile for the memory image.  Running
 `volatility -f KobayashiMaru.vmem imageinfo` suggested the profile
-`WinXPSP2x86` or `WinXPSP3x86` and reported a memory size of 512 MB【131694685109100†L37-L61】.
+`WinXPSP2x86` or `WinXPSP3x86` and reported a memory size of 512 MB.
 Figure 1 shows the output of this command.
 
 ![Figure 1 – Determining memory profile and OS](image-000.png)
@@ -34,11 +34,11 @@ Figure 1 shows the output of this command.
 Windows services (e.g., `System`, `lsass.exe`, `svchost.exe`), several suspicious
 executables were identified:
 
-- **`poisonivy.exe`** – a remote‑access Trojan that grants attackers full control【131694685109100†L64-L100】.
-- **`nc.exe`** – Netcat, commonly used for backdoors and file transfer【131694685109100†L64-L100】.
-- **`bircd.exe`** – a Windows IRC server used to control bots【131694685109100†L64-L100】.
-- **`iroffer.exe`** – an IRC file‑sharing bot【131694685109100†L64-L100】.
-- **`cryptcat.exe`** – an encrypted Netcat variant for covert C2【131694685109100†L64-L100】.
+- **`poisonivy.exe`** – a remote‑access Trojan that grants attackers full control.
+- **`nc.exe`** – Netcat, commonly used for backdoors and file transfer.
+- **`bircd.exe`** – a Windows IRC server used to control bots.
+- **`iroffer.exe`** – an IRC file‑sharing bot.
+- **`cryptcat.exe`** – an encrypted Netcat variant for covert C2.
 - **`cmd.exe`** and **`rundll32.exe`** – command shells likely launched by malware.
 
 Figure 2 illustrates the process list with these suspicious programs highlighted.
@@ -88,7 +88,7 @@ From the analysis we extracted the following indicators:
 - Presence of an IRC server (`bircd.exe`/`iroffer.exe`) and encrypted backdoor
   (`cryptcat.exe`) suggests membership in a botnet controlled via IRC.
 - Volatility `consoles` output shows commands executed as **Daniel Faraday**,
-  indicating attacker activity under this user account【131694685109100†L106-L129】.
+  indicating attacker activity under this user account.
 
 ## Conclusion
 
@@ -99,8 +99,3 @@ attacker with persistent remote access and C2 channels.  The compromised
 host was likely part of a larger IRC‑based botnet.  Incident responders
 should isolate the host, collect additional forensic data, eradicate the
 malware and reset all affected credentials.
-
-## References
-
-- Volatility Foundation – <https://www.volatilityfoundation.org/>
-- Course notes and lab instructions (see accompanying PDF)【131694685109100†L37-L61】.
