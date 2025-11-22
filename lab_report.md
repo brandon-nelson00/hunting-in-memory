@@ -1,5 +1,9 @@
 # Hunting in Memory – Lab Report
 
+**Course:** IS‑3523 – Intrusion Detection and Incident Response  **Date:** April 13 2025
+
+**Author:** Brandon Nelson
+
 ## Introduction
 
 This report documents a memory forensics investigation of
