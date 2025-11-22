@@ -1,40 +1,24 @@
 # Hunting in Memory
 
-## Overview
+This repository contains a detailed forensic analysis of a Windows XP memory image as part of **Lab: Memory Analysis**, completed for **IS-3523: Intrusion Detection and Incident Response** in March 2025.  
+The objective was to analyze a captured memory dump, identify active malware, enumerate processes, uncover attacker activity, and document the forensic evidence extracted using the Volatility framework.
 
-This repository contains a forensic analysis of a memory image captured from a compromised Windows XP system. By leveraging the Volatility framework and other memory forensic tools, the investigation identifies the operating system version, installed RAM, active processes, and user sessions to uncover evidence of malware and unauthorized access.
+---
 
-## Objectives
+## Project Overview
 
-- Determine the OS and memory characteristics of the system.
-- Enumerate running processes and highlight suspicious executables (e.g., poisonivy.exe, nc.exe, bircd.exe, iroffer.exe, cryptcat.exe).
-- Identify loaded DLLs and network connections.
-- Discover user accounts and console sessions.
-- Correlate artifacts to build an attack timeline and identify persistence mechanisms.
+The compromised system’s memory (`KobayashiMaru.vmem`) was examined using Volatility to build a full picture of the operating environment and attacker activity. Over the course of the lab, the analyst:
 
-## Repository structure
+- Identified OS version, SP level, and RAM characteristics using `imageinfo`.
+- Enumerated running processes and flagged suspicious executables such as **poisonivy.exe**, **nc.exe**, **bircd.exe**, **iroffer.exe**, and **cryptcat.exe**.
+- Listed loaded DLLs for malware correlation.
+- Used `netscan` / `connections` plugins to identify open sockets tied to RATs and IRC bots.
+- Extracted evidence of active user sessions, including console activity tied to user **Daniel Faraday**.
+- Reconstructed attacker behavior by correlating processes, DLLs, and network activity.
+- Documented the absence of password hashes due to missing registry hives.
 
-- `README.md` – this file; summarizes the project and provides quick usage tips.
-- `lab_report.md` – detailed write-up documenting methodology, analysis steps, results, and conclusions.
-- `images/` – directory for screenshots referenced in the report (if applicable).
+The complete write-up, including screenshots, can be found in **lab_report.md**.
 
-## Usage
+---
 
-This repository is intended as a reference for memory forensics and incident response education. To reproduce the analysis:
-
-1. Download the memory image (`KobayashiMaru.vmem`) and Volatility.
-2. Run `volatility -f KobayashiMaru.vmem imageinfo` to determine OS profile and memory offsets.
-3. Use `volatility --profile=WinXPSP2x86 pslist` to list processes, `filescan` to locate hidden files, `consoles` to identify user sessions, etc.
-4. Refer to `lab_report.md` for detailed command examples and analysis.
-
-## Key findings
-
-- The memory image corresponds to Windows XP SP2/SP3 with 512 MB of RAM【131694685109100†L37-L61】.
-- Suspicious processes such as `poisonivy.exe` (remote access Trojan), `nc.exe` (Netcat), `bircd.exe` (IRC bot), `iroffer.exe` (file sharing bot), and `cryptcat.exe` (encrypted Netcat) were found running【131694685109100†L64-L100】.
-- Analysis of the consoles plugin revealed user `Daniel Faraday` as the primary account, with evidence of remote console usage; however, password hashes could not be recovered due to missing hives【131694685109100†L106-L129】.
-- These findings indicate that the system was part of an IRC-based botnet controlled through the Poison Ivy RAT and Netcat backdoors.
-
-## References
-
-- [Volatility Framework Documentation](https://www.volatilityfoundation.org/)
-- See `lab_report.md` for detailed analysis and citations.
+## Repository Structure
