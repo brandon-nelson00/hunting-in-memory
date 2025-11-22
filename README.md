@@ -17,7 +17,7 @@ The compromised system’s memory (`KobayashiMaru.vmem`) was examined using Vola
 - Reconstructed attacker behavior by correlating processes, DLLs, and network activity.
 - Documented the absence of password hashes due to missing registry hives.
 
-The complete write-up, including screenshots, can be found in **lab_report.md**.
+The complete write-up, including screenshots, can be found in [`lab_report.md`](lab_report.md).
 
 ---
 
