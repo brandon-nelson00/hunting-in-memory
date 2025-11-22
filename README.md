@@ -22,11 +22,11 @@ The complete write-up, including screenshots, can be found in **lab_report.md**.
 ---
 
 ## Repository Structure
-hunting_in_memory/
-├── images/              
-│   ├── image-000.png    
-│   ├── image-001.png    
-│   ├── image-002.png    
-│   ├── ...              
-├── lab_report.md        
-└── README.md            
+hunting_in_memory_repo/
+├── images/              # Extracted figures from the memory analysis
+│   ├── image-000.png    # OS identification (imageinfo)
+│   ├── image-001.png    # Process enumeration (pslist)
+│   ├── image-002.png    # Suspicious executables
+│   ├── …                # Additional screenshots referenced in the report
+├── lab_report.md        # Detailed procedural write-up with embedded figures
+└── README.md            # Overview and quick reference (this file)
